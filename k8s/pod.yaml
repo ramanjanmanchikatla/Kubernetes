@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+
+
+metadata:
+  name: fastapi-application
+
+
+
+spec:
+  containers:
+    - name: fastapi-k8s
+      image: kubernetesk8s:1.0
+      ports:
+        - containerPort: 8000
+  

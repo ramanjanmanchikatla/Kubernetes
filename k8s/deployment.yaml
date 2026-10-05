@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: fastapi-deployment
+
+spec:
+  replicas: 3
+
+### the replica will always be maintained by the deployment 
+
+## it compares the desired state with the current state and if there is any difference it will create or delete the pods to maintain the desired state
+## this is self healing of the kubernetes cluster
+  selector:
+    matchLabels:
+      app: fastapi-application
+
+  template:
+    metadata:
+      labels:
+        app: fastapi-application
+
+    spec:
+      containers:
+        - name: fastapi
+          image: kubernetesk8s:1.0
+          ports:
+            - containerPort: 8000
+  
